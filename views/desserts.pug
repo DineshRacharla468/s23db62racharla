@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+ 
+  - let results  = [{Name :"apricotdelight",Calories :"124cal",Price:100 },{Name :"laddu",Calories :"87cal",Price:15 },{Name :"badhamsweet",Calories :"113cal",Price:45}];
+
+  script.
+    function buy(index){
+      alert("You purchased items " + (index+1));
+    }
+ 
+  div.container-fluid
+    div.row
+        each Desserts, index in results
+            div.col-sm-2(onClick = `buy(${index})`)
+                p Product Name:  #{Desserts.Name}
+                p Brand: #{Desserts.Calories}
+                p Price: #{Desserts.Price}
+  
