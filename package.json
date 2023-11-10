@@ -1,5 +1,5 @@
 {
-  "name": "f23wb62racharla",
+  "name": "s23db62racharla",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,5 +15,8 @@
     "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=15.0.0"
   }
 }
