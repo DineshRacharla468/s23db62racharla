@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1(style='font-family: Arial, sans-serif; color: #333;')= title
+
+  - let dessertid = toShow._id
+  - let dessertname = toShow.Name
+  - let dessertcalories = toShow.Calories
+  - let dessertprice = toShow.Price
+
+  div
+    div.row
+      div(class='dessertAttr mr-3', style='color: #990000;') Dessert ID:
+      div(style='background-color: #ffeecc; font-family: "Courier New", monospace;') #{dessertid}
+    
+    div.row
+      div(class='dessertAttr mr-3', style='color: #009933;') Dessert Name:
+      div(style='background-color: #ccffcc; font-family: "Arial Black", sans-serif;') #{dessertname}
+    
+    div.row
+      div(class='dessertAttr mr-3', style='color: #003399;') Dessert Calorie:
+      div(style='background-color: #ccebff; font-family: Verdana, Geneva, sans-serif;') #{dessertcalories}
+    
+    div.row
+      div(class='dessertAttr mr-3', style='color: #660099;') Dessert Price:
+      div(style='background-color: #f9d6ff; font-family: "Times New Roman", Times, serif;') #{dessertprice}

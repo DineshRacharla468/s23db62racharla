@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+  form(id='DessertForm', action="/resource/desserts", method="POST")
+    div.form-group
+      label.dessertAttr(for='Name') Dessert name
+      input#dessert_type(type='text', name='Name')
+    div.form-group
+      label.dessertAttr(for='Calories') dessert calorie
+      input#dessert_type(type='text', name='Calories')
+    div.form-group
+      label.dessertAttr(for='Price') dessert price
+      input#dessert_type(type='number', name='Price')
+    input(type="submit")
+    script.
+      document.forms['DessertForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Save succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Save failed " + error)
+        });
+      });

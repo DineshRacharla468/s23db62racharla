@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let dessertid = toShow._id
+    - let dessertname = toShow.Name
+    - let dessertcalories = toShow.Calories
+    - let dessertprice = toShow.Price
+    - let actionid = "/resource/desserts/" + dessertid
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='dessertAttr mr-3') dessert ID is:
+        div #{dessertid}
+      
+      div.row
+        div(class='dessertAttr mr-3') dessert name is:
+        div #{dessertname}
+      
+      div.row
+        div(class='dessertAttr mr-3') dessert calorie is:
+        div #{dessertcalories}
+      
+      div.row
+        div(class='dessertAttr mr-3') dessert price is:
+        div #{dessertprice}
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the costume collection
+        window.location.href='/desserts'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/desserts'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error)
+        });
+      }
