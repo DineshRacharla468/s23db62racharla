@@ -13,13 +13,13 @@ block content
   form(id='DessertForm', action= actionid, method="PUT")
     div.form-group
       label.dessertAttr(for='Name') Dessert name
-      input#dessert_type(type='text', name='Name', value=Name)
+      input#dessert_type(type='text', name='Name', value=dessertname)
     div.form-group
       label.dessertAttr(for='Calories') dessert calorie
-      input#dessert_type(type='text', name='Calories', value=Calories)
+      input#dessert_type(type='text', name='Calories', value=dessertcalories)
     div.form-group
       label.dessertAttr(for='Price') dessert price
-      input#dessert_type(type='number', name='Price', value=Price)
+      input#dessert_type(type='number', name='Price', value=dessertprice)
     input(type="submit")
     script.
       document.forms['DessertForm'].addEventListener('submit', (event) => {
