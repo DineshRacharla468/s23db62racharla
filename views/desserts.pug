@@ -2,6 +2,8 @@ extends layout
 
 block content
   h1= title
+  a.btn.btn-primary.btn-sm(href='/desserts/create') Create New
+
 
   - let result = results
 
@@ -14,11 +16,15 @@ block content
     div.row.m-1
       each Desserts, index in result
         - let destination = `dispatch(\"/desserts/update?id=${Desserts._id}\")`
+        - let destin = `dispatch(\"/desserts/delete?id=${Desserts._id}\")`
+        - let destin1 = `dispatch(\"/desserts/detail?id=${Desserts._id}\")`
         div.col-sm-2.m-1(onClick=`buy(${index})`)
           p Product Name: #{Desserts.Name}
           p Brand: #{Desserts.Calories}
-          p Price: #{Desserts.Price}
+          p Price: #{Desserts.Price}s
           button.btn(class="btn-primary ml-1", onclick=destination) Update
+          button.btn(class="btn-primary ml-1", onclick=destin) delete
+          button.btn(class="btn-primary ml-1", onclick=destin1) details
 
   script.
     function dispatch(path){

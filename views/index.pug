@@ -1,19 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Hello Express World
-  button(type="button", class="btn btn-warning", onClick='goFaster()') Press Me
-  div(id = "faster") Increase the speed
-  script.
-      var mph = 20;
-      var change = 1;
+  // If user is not logged in, show login and registration links
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
 
-      function goFaster(){
-          mph = mph + change;
-          change = change + 1;
-          document.getElementById("faster").textContent = "MPH " + mph + " with change " + change; 
-      }
-
-  br
-  a(href="/desserts")  Desserts
+  // If user is logged in, display user information and relevant actions
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/desserts") Take me to desserts
+    br
+    a(href="/logout") Logout
